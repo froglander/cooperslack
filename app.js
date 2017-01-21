@@ -44,14 +44,15 @@ function sendMessage(urlObject) {
         case "weather":
             responseText = "Weather";
 
-            axios.get('http://api.openweathermap.org/data/2.5/weather', {
-                params: {
-                    zip: userInput,
-                    appid: "f747acb2d754a444965cf18e4f1eab22"
-                }
+            // http://api.openweathermap.org/data/2.5/weather?zip=34715&appid=f747acb2d754a444965cf18e4f1eab22
+            axios.get('http://api.openweathermap.org/data/2.5/weather?zip=' + userInput + ',us&appid=f747acb2d754a444965cf18e4f1eab22', {
+                // params: {
+                //     zip: userInput,
+                //     appid: "f747acb2d754a444965cf18e4f1eab22"
+                // }
             })
                 .then(function (response) {
-                    console.log(response);
+                    console.log("Weather response: ", response);
                 })
                 .catch(function (error) {
                     console.log(error);
