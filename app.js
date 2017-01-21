@@ -59,6 +59,7 @@ function sendMessage(urlObject) {
                     console.log("Weather temp: ", response.data.main.temp);
 
                     responseText = "The weather is " + response.data.weather[0].description + " and " + response.data.main.temp + " degrees fahrenheit";
+                    console.log("responseText: ", responseText);
 
                 })
                 .catch(function (error) {
