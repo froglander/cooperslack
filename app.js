@@ -42,7 +42,7 @@ function sendMessage(urlObject) {
             responseText = "The Magic 8 Ball says: " + eightBall();
             break;
         case "weather":
-            responseText = "Weather";
+            //responseText = "Weather";
 
             // http://api.openweathermap.org/data/2.5/weather?zip=34715&appid=f747acb2d754a444965cf18e4f1eab22
             // axios.get('http://api.openweathermap.org/data/2.5/weather?zip=' + userInput + ',us&appid=f747acb2d754a444965cf18e4f1eab22', {
@@ -57,6 +57,9 @@ function sendMessage(urlObject) {
                     console.log("Weather response: ", response.data.weather);
                     console.log("Weather description: ", response.data.weather[0].description);
                     console.log("Weather temp: ", response.data.main.temp);
+
+                    responseText = "The weather is " + response.data.weather[0].description + " and " + response.data.main.temp + " degrees fahrenheit";
+
                 })
                 .catch(function (error) {
                     console.log(error);
