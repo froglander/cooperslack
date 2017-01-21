@@ -69,7 +69,7 @@ function sendMessage(urlObject) {
                     console.log("Weather description: ", response.data.weather[0].description);
                     console.log("Weather temp: ", response.data.main.temp);
 
-                    responseText = "The weather is " + response.data.weather[0].description + " and " + response.data.main.temp + " degrees fahrenheit";
+                    responseText = "Weather: " + response.data.weather[0].description + " and " + response.data.main.temp + " degrees fahrenheit";
                     console.log("responseText: ", responseText);
 
                     slack.webhook({
