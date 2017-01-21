@@ -1,5 +1,6 @@
 var Slack = require('slack-node');
 var express = require('express');
+var axios = require('axios');
 var url = require('url');
 var app = express();
 
@@ -28,14 +29,48 @@ function sendMessage(urlObject) {
 
 
     //   /mySlashCommand catfish    'catfish' is stored in var userCommand
-    var userText = urlObject.text;
+    var userText = urlObject.text.split(" ");
 
-    var userCommand = userText.split(" ", 1);
+
+    var userCommand = userText[0];
+    var userInput = userText[1];
+
+    var responseText = "";
+
+    switch (userCommand.toLowerCase()) {
+        case "8ball":
+            responseText = "The Magic 8 Ball says: " + eightBall();
+            break;
+        case "weather":
+            responseText = "Weather";
+
+            axios.get('http://api.openweathermap.org/data/2.5/weather', {
+                params: {
+                    zip: userInput,
+                    appid: "f747acb2d754a444965cf18e4f1eab22"
+                }
+            })
+                .then(function (response) {
+                    console.log(response);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
+
+
+            //"http://api.openweathermap.org/data/2.5/weather?zip=" + "userInput" + ",us&appid=f747acb2d754a444965cf18e4f1eab22"
+
+            break;
+        default:
+            responseText = "You need to choose an option! [8ball, weather]";
+    }
+
 
     slack.webhook({
         channel: urlObject.channel_name,
 
-        text: "Hello, you asked the magic 8 ball: " + userText + ", the Magic 8 Ball says: " + eightBall() + " Command: " + userCommand // the response back to slack
+        text: responseText
 
     }, function (err, response) {
         if (err) {
