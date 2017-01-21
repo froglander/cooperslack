@@ -30,10 +30,12 @@ function sendMessage(urlObject) {
     //   /mySlashCommand catfish    'catfish' is stored in var userCommand
     var userText = urlObject.text;
 
+    var userCommand = userText.split(" ", 1);
+
     slack.webhook({
         channel: urlObject.channel_name,
 
-        text: "Hello, you asked the magic 8 ball: " + userText + ", the Magic 8 Ball says: " + eightBall() // the response back to slack
+        text: "Hello, you asked the magic 8 ball: " + userText + ", the Magic 8 Ball says: " + eightBall() + " Command: " + userCommand // the response back to slack
 
     }, function (err, response) {
         if (err) {
