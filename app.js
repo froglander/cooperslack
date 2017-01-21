@@ -39,7 +39,18 @@ function sendMessage(urlObject) {
 
     switch (userCommand.toLowerCase()) {
         case "8ball":
-            responseText = "The Magic 8 Ball says: " + eightBall();
+            // responseText = "The Magic 8 Ball says: " + eightBall();
+
+            slack.webhook({
+                channel: urlObject.channel_name,
+
+                text: "The Magic 8 Ball says: " + eightBall()
+
+            }, function (err, response) {
+                if (err) {
+                    console.log(err)
+                }
+            });
             break;
         case "weather":
             //responseText = "Weather";
@@ -60,6 +71,18 @@ function sendMessage(urlObject) {
 
                     responseText = "The weather is " + response.data.weather[0].description + " and " + response.data.main.temp + " degrees fahrenheit";
                     console.log("responseText: ", responseText);
+
+                    slack.webhook({
+                        channel: urlObject.channel_name,
+
+                        text: responseText
+
+                    }, function (err, response) {
+                        if (err) {
+                            console.log(err)
+                        }
+                    });
+
 
                 })
                 .catch(function (error) {
