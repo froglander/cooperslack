@@ -54,12 +54,13 @@ function sendMessage(urlObject) {
                 }
             })
                 .then(function (response) {
-                    console.log("Weather response: ", response.data);
+                    console.log("Weather response: ", response.data.weather);
+                    console.log("Weather description: ", response.data.weather[0].description);
+                    console.log("Weather temp: ", response.data.main.temp);
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
-
 
 
             //"http://api.openweathermap.org/data/2.5/weather?zip=" + "userInput" + ",us&appid=f747acb2d754a444965cf18e4f1eab22"

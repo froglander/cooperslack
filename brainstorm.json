@@ -1,0 +1,42 @@
+{
+  coord: {
+    lon: -80.33,
+    lat: 26.05
+  },
+  weather: [
+    {
+      id: 800,
+      main: 'Clear',
+      description: 'clear sky',
+      icon: '01n'
+    }
+  ],
+  base: 'stations',
+  main: {
+    temp: 66.2,
+    pressure: 1016,
+    humidity: 100,
+    temp_min: 66.2,
+    temp_max: 66.2
+  },
+  visibility: 16093,
+  wind: {
+    speed: 6.73,
+    deg: 206.505
+  },
+  clouds: {
+    all: 1
+  },
+  dt: 1484960280,
+  sys: {
+    type: 1,
+    id: 663,
+    message: 0.1868,
+    country: 'US',
+    sunrise: 1485000551,
+    sunset: 1485039396
+  },
+  id: 4174503,
+  name: 'Sunshine Ranches',
+  cod: 200
+}
