@@ -52,7 +52,7 @@ function sendMessage(urlObject) {
                 // }
             })
                 .then(function (response) {
-                    console.log("Weather response: ", response);
+                    console.log("Weather response: ", response.data);
                 })
                 .catch(function (error) {
                     console.log(error);
